@@ -1,38 +1,26 @@
-# Library Management System
+-- list all available books 
+SELECT *
+FROM books
+WHERE is_available=true;
 
-### Tables
+-- books by a specific author 
+SELECT b.title, b.is_available
+FROM books b
+JOIN authors a
+ON a.id = b.author_id
+WHERE b.author_id=3;
 
-#### authors
-- `id` 
-- `name` 
-- `nationality` 
-- `birth_year` 
-- `death_year`
+-- current loans
+SELECT *
+FROM loans
+WHERE return_date IS NULL;
 
-#### books
-- `id` 
-- `title`
-- `author_id`
-- `is_available` 
+-- book loan history
+SELECT *
+FROM loans
+WHERE book_id = 2;
 
-#### members
-- `id` 
-- `name` 
-- `phone`
-- `email` 
-- `join_at` 
-
-#### loans
-- `id` 
-- `member_id` 
-- `book_id`
-- `borrow_at` 
-- `return_date` 
-
-### Queries 
-
-- list all available books 
-- books by a specific author 
-- current loans
-- book loan history
-- member history 
+-- member history 
+SELECT *
+FROM loans
+WHERE member_id = 5;
